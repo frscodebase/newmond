@@ -18,7 +18,7 @@ if page.status_code==200:
         # options = [option.get('value') for option in option_functions]
         for option in option_functions:
             scrapped_functions=JobFunctions()
-            scrapped_functions.jobFunction=option.get('value')
+            scrapped_functions.jobFunction=option.getText()
             if not JobFunctions.objects.filter(jobFunction=scrapped_functions.jobFunction).exists():
                 scrapped_functions.save()
 
@@ -27,7 +27,7 @@ if page.status_code==200:
         # options = [option.get('value') for option in option_industries]
         for option in option_industries:
             scrapped_industries=Industries()
-            scrapped_industries.industry=option.get('value')
+            scrapped_industries.industry=option.getText()
             if not Industries.objects.filter(industry=scrapped_industries.industry).exists():
                 scrapped_industries.save()
 
@@ -36,7 +36,7 @@ if page.status_code==200:
         # options = [option.get('value') for option in option_locations]
         for option in option_locations:
             scrapped_location=Location()
-            scrapped_location.location=option.get('value')
+            scrapped_location.location=option.getText()
             if not Location.objects.filter(location=scrapped_location.location).exists():
                 scrapped_location.save()
 
